@@ -1,61 +1,42 @@
+
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import UserList from './src/views/UserList';
-import UserForm from './src/views/UserForm';
-import { Button } from 'react-native-elements';
-import { Icon } from 'react-native-elements';
-
-
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import Task from './src/pages/Task';
+import NewTask from './src/pages/NewTask'
+import Details from './src/pages/Details'
 const Stack = createStackNavigator();
 
-export default props =>{
+
+export default function App(){
   return(
     <NavigationContainer>
-      <Stack.Navigator 
-      initialRouteName = "UserList"
-      screenOptions = {screenOptions}>
+      <Stack.Navigator initialRouteName = "Task">
         <Stack.Screen
-        name ="UserList"
-        component = {UserList}
-        options = { ({ navigation }) => {
-            return{
-              title: "Lista de usuarios",
-              headerRight: () => (
-                <Button
-                onPress= {() => navigation.navigate("UserForm")}
-                type = 'clear'
-                icon = {<Icon name = "add" size = {25}  color = {"white"}/>}
-                />
-              )
-
-            }
-          }
-        }
+        name = "Task"
+        component = {Task}
+        options = {{
+          headerTintColor: "#f92e6a"
+        }}
         />
+
         <Stack.Screen
-        name ="UserForm"
-        component = {UserForm}
-        Options ={ () => {
-          return{
-            title : "Formulário de Usuários"
-          }
-        }
-
-        }
+        name = "NewTask"
+        component = {NewTask}
+        options = {{
+          headerTintColor: "#f92e6a"
+        }}
         />
-       
+
+        <Stack.Screen
+        name = "Details"
+        component = {Details}
+        options = {{
+          headerTintColor: "#f92e6a"
+        }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-const screenOptions = {
-  headerStyle: {
-    backgroundColor : '#f4511e'
-  },
-  headerTintColor:'#fff',
-  headerTitleStyle: {
-      fontWeigth: 'bold'
-  } 
-}
