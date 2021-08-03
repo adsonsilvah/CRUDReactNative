@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     },
     Tasks:{
         width:"100%",
-        flexDirection: "column",
+        flexDirection: "row",
         justifyContent: "space-between",
         marginTop: 5,
     },
